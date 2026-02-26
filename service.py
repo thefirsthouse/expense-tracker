@@ -54,3 +54,13 @@ def list_expenses() -> None:
     for expense in expenses:
         print(expense.id, expense.description, expense.date)
     print("=== END ===")
+
+
+def summary() -> float:
+    expenses = load_expenses()
+    return sum(expense.amount for expense in expenses)
+
+
+# def summary_by_month(month: int):
+#     expenses = load_expenses()
+#     return sum(expense.amount)
