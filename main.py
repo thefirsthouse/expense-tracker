@@ -16,22 +16,21 @@ def command_handler() -> dict:
 
     subparsers = parser.add_subparsers(dest="command")
 
-    # add
     add_parser = subparsers.add_parser("add")
     add_parser.add_argument("--description", type=str, required=True)
     add_parser.add_argument("--amount", type=float, required=True)
 
     # delete
-    add_parser = subparsers.add_parser("delete")
-    add_parser.add_argument("--id", type=int, required=True)
+    delete_parser = subparsers.add_parser("delete")
+    delete_parser.add_argument("--id", type=int, required=True)
 
     # list
-    add_parser = subparsers.add_parser("list")
-    add_parser.add_argument("--month", type=int)
+    list_parser = subparsers.add_parser("list")
+    list_parser.add_argument("--month", type=int)
 
     # summary
-    add_parser = subparsers.add_parser("summary")
-    add_parser.add_argument("--month", required=False)
+    summary_parser = subparsers.add_parser("summary")
+    summary_parser.add_argument("--month", required=False)
 
     args = parser.parse_args()
 
@@ -39,8 +38,7 @@ def command_handler() -> dict:
 
 
 def main():
-    print(summary())
-    if len(sys.argv) < 1:
+    if len(sys.argv) == 1:
         raw = input("Enter command: ")
         sys.argv += raw.split()
     command = command_handler()
@@ -59,7 +57,8 @@ def main():
         # if len(command) > 2:
         #     print("Feature is not available on this version")
         #     return
-        return summary()
+        summary_amount = summary()
+        print(f"Summary: {summary_amount}")
 
 
         
