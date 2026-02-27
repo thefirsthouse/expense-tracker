@@ -1,9 +1,10 @@
 """Expense model file"""
 
 from typing import Optional
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
 
 
+@dataclass
 class Expense:
     """Basic expense model"""
 
