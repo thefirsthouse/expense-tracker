@@ -40,17 +40,6 @@ def delete_expense(id: int) -> bool:
     return False
 
 
-def update_expense(id: int, new_description: str) -> bool:
-    """Updates an expense from list"""
-
-    expenses = load_expenses()
-    expense = find_item(expenses, id)
-    if expense:
-        expense.description = new_description
-        save_expenses(expenses)
-        return True
-    return False
-
 def list_expenses() -> None:
     expenses = load_expenses()
     for expense in expenses:
