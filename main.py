@@ -55,10 +55,10 @@ def main():
     elif cmd == "list":
         list_expenses()
     elif cmd == "summary":
-        if len(command) > 1:
+        if command["month"] != None:
             print(f"Summary for {command["month"]} - {summary_by_month(command['month'])}")
-            pass
-        print(f"Summary: {summary()}")
+        else:
+            print(f"Summary: {summary()}")
 
 
         

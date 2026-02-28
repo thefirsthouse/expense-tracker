@@ -65,8 +65,12 @@ def summary() -> float:
 
 def summary_by_month(month: int) -> float:
     expenses = load_expenses()
-    sum = 0
+    total = 0
     for expense in expenses:
-        if (int(expense.date[5:7]) == int(month)):
-           sum += expense.amount
-    return sum 
+        try:
+            expense_month = datetime.datetime.strptime(expense.date, '%Y-%m-%d').month
+            if expense_month == int(month):
+                total += expense.amount
+        except ValueError:
+            continue # skip incorrect dates
+    return total
