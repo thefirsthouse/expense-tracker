@@ -1,5 +1,4 @@
 import argparse
-import sys
 
 from service import (
     add_expense,
@@ -39,9 +38,6 @@ def command_handler() -> dict:
 
 
 def main():
-    if len(sys.argv) == 1:
-        raw = input("Enter command: ")
-        sys.argv += raw.split()
     command = command_handler()
     if not command:
         return
@@ -59,9 +55,6 @@ def main():
             print(f"Summary for {command["month"]} - {summary_by_month(command['month'])}")
         else:
             print(f"Summary: {summary()}")
-
-
-        
 
 
 if __name__ == "__main__":
