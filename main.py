@@ -5,7 +5,8 @@ from service import (
     add_expense,
     delete_expense,
     list_expenses,
-    summary
+    summary,
+    summary_by_month
 )
 
 
@@ -54,11 +55,10 @@ def main():
     elif cmd == "list":
         list_expenses()
     elif cmd == "summary":
-        # if len(command) > 2:
-        #     print("Feature is not available on this version")
-        #     return
-        summary_amount = summary()
-        print(f"Summary: {summary_amount}")
+        if len(command) > 1:
+            print(f"Summary for {command["month"]} - {summary_by_month(command['month'])}")
+            pass
+        print(f"Summary: {summary()}")
 
 
         

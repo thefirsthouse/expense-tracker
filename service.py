@@ -63,6 +63,10 @@ def summary() -> float:
     return sum(expense.amount for expense in expenses)
 
 
-# def summary_by_month(month: int):
-#     expenses = load_expenses()
-#     return sum(expense.amount)
+def summary_by_month(month: int) -> float:
+    expenses = load_expenses()
+    sum = 0
+    for expense in expenses:
+        if (int(expense.date[5:7]) == int(month)):
+           sum += expense.amount
+    return sum 
